@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu"
+  },
+  "hero": {
+    "subtitle": "ITALIAN SPECIALTIES",
+    "tagline": "Good food | Good wine"
+  },
+  "about": {
+    "highlight": "The most loved in the neighborhood",
+    "title": "Welcome",
+    "subtitle": "Recognized for good food and drinks since 1998.",
+    "description": "Our restaurant is a group of people passionate about Italian cuisine and extremely dedicated to delivering the best possible food and service."
+  },
+  "hours": {
+    "title": "Hours",
+    "description": "Every day from 9am to 11pm"
+  },
+  "menu": {
+    "title": "Our Menu",
+    "subtitle": "Quality ingredients, tasty dishes",
+    "fullMenu": "Open Full Menu",
+    "categories": {
+      "pizzas": "Pizzas",
+      "burgers": "Burgers",
+      "portions": "Portions"
+    },
+    "status": {
+      "new": "New",
+      "limited": "Limited",
+      "promo": "Sale"
+    },
+    "sizes": {
+      "large": "LARGE",
+      "medium": "MEDIUM",
+      "small": "SMALL"
+    }
+  },
+  "footer": {
+    "imageAlt": "Footer image with ingredients",
+    "developedBy": "Developed by",
+    "by": "by",
+    "copyright": "Copyright © 2020 Menu Template. All rights reserved."
+  },
+  "cookies": {
+    "title": "This site uses cookies",
+    "description": "We use cookies to improve your browsing experience, personalize content and ads, and analyze our traffic. By continuing to browse, you agree to the use of cookies.",
+    "learnMore": "Learn more in our Privacy Policy",
+    "accept": "Accept all",
+    "reject": "Reject",
+    "privacyPolicy": "Privacy Policy"
+  }
+}

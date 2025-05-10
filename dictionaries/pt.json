@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Início",
+    "menu": "Cardápio"
+  },
+  "hero": {
+    "subtitle": "ESPECIALIDADES ITALIANA",
+    "tagline": "Comida boa | Bom vinho"
+  },
+  "about": {
+    "highlight": "O mais amado do bairro",
+    "title": "Bem-vindo",
+    "subtitle": "Reconhecido pela boa comida e bebida desde 1998.",
+    "description": "Nosso restaurante é um conjunto de gente apaixonada pela culinária italiana e extremamente dedicados a entregar a melhor comida e atendimento possível."
+  },
+  "hours": {
+    "title": "Horário",
+    "description": "Todos os dias das 9h até as 23h"
+  },
+  "menu": {
+    "title": "Nosso Cardápio",
+    "subtitle": "Ingredientes de qualidade, pratos saborosos",
+    "fullMenu": "Abrir Cardápio Completo",
+    "categories": {
+      "pizzas": "Pizzas",
+      "burgers": "Lanches",
+      "portions": "Porções"
+    },
+    "status": {
+      "new": "Novidade",
+      "limited": "Limitado",
+      "promo": "Promoção"
+    },
+    "sizes": {
+      "large": "GRANDE",
+      "medium": "MÉDIA",
+      "small": "BROTO"
+    }
+  },
+  "footer": {
+    "imageAlt": "Imagem do rodapé com ingredientes",
+    "developedBy": "Desenvolvido por",
+    "by": "por",
+    "copyright": "Copyright © 2020 Modelo de Cardápio. Todos os direitos reservados."
+  },
+  "cookies": {
+    "title": "Este site usa cookies",
+    "description": "Utilizamos cookies para melhorar sua experiência de navegação, personalizar conteúdo e anúncios, e analisar nosso tráfego. Ao continuar navegando, você concorda com o uso de cookies.",
+    "learnMore": "Saiba mais em nossa Política de Privacidade",
+    "accept": "Aceitar todos",
+    "reject": "Rejeitar",
+    "privacyPolicy": "Política de Privacidade"
+  }
+}
