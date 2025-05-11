@@ -81,7 +81,7 @@ export default async function MenuPage({ params }: { params: { lang: string } })
       </section>
 
       {/* Portions Section */}
-      <section className="container mx-auto px-4 py-8 dark:pb-4">
+      <section className="container mx-auto px-4 py-8">
         <div
           className="w-full h-[60px] rounded-md bg-purple-800 dark:bg-purple-900 flex items-center justify-center mb-4"
           style={{

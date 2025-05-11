@@ -64,7 +64,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
       </section>
 
       {/* Menu Section */}
-      <section className="container mx-auto px-2 flex flex-col items-center mb-6 dark:mb-2">
+      <section className="container mx-auto px-2 flex flex-col items-center mb-6 dark:mb-4">
         <div className="flex flex-col items-center gap-2 mb-4">
           <Image
             src="https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/menu-leaf.png"
