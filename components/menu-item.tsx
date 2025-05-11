@@ -35,13 +35,14 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
       {/* Layout para celular (vertical) */}
       <div className="sm:hidden flex flex-col w-full overflow-hidden">
         <div className="relative cursor-pointer p-1.5 w-full" onClick={() => setLightboxOpen(true)}>
-          <div className="w-full aspect-square">
+          <div className="w-full aspect-square overflow-hidden rounded-md">
             <Image
               src={image || "/placeholder.svg"}
               alt={title}
               width={120}
               height={120}
-              className="w-full h-full object-cover rounded-md"
+              className="w-full h-full object-cover !rounded-md"
+              style={{ borderRadius: "0.375rem" }}
             />
           </div>
 
@@ -101,13 +102,16 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
       {/* Layout para tablet e desktop (horizontal) */}
       <div className="hidden sm:flex flex-row min-w-[320px] w-full">
         <div className="relative cursor-pointer p-1.5" onClick={() => setLightboxOpen(true)}>
-          <Image
-            src={image || "/placeholder.svg"}
-            alt={title}
-            width={120}
-            height={120}
-            className="w-[120px] h-[120px] object-cover rounded-md"
-          />
+          <div className="overflow-hidden rounded-md">
+            <Image
+              src={image || "/placeholder.svg"}
+              alt={title}
+              width={120}
+              height={120}
+              className="w-[120px] h-[120px] object-cover !rounded-md"
+              style={{ borderRadius: "0.375rem" }}
+            />
+          </div>
 
           {/* Status tag posicionado no canto superior esquerdo da imagem */}
           {status === "promocao" && (

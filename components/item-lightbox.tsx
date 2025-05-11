@@ -63,7 +63,10 @@ export default function ItemLightbox({ isOpen, onClose, item, dictionary }: Item
 
   return (
     <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center" onClick={onClose}>
-      <div className="relative max-w-[90vw] max-h-[90vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="relative max-w-[90vw] max-h-[90vh] overflow-hidden rounded-lg"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="absolute top-4 right-4 z-10 flex gap-2">
           <button
             onClick={toggleInfo}
@@ -96,7 +99,7 @@ export default function ItemLightbox({ isOpen, onClose, item, dictionary }: Item
         </div>
 
         <div
-          className="overflow-auto max-w-[90vw] max-h-[90vh] transition-transform duration-200 ease-out"
+          className="overflow-auto max-w-[90vw] max-h-[90vh] transition-transform duration-200 ease-out rounded-lg"
           style={{
             transform: `scale(${zoom})`,
             cursor: zoom > 1 ? "move" : "default",
@@ -107,7 +110,8 @@ export default function ItemLightbox({ isOpen, onClose, item, dictionary }: Item
             alt={title}
             width={1200}
             height={1200}
-            className="object-contain max-h-[90vh] select-none"
+            className="object-contain max-h-[90vh] select-none rounded-lg"
+            style={{ borderRadius: "0.5rem" }}
             priority
             unoptimized
             onContextMenu={(e) => e.preventDefault()}
@@ -116,7 +120,7 @@ export default function ItemLightbox({ isOpen, onClose, item, dictionary }: Item
 
         {/* Informações do item */}
         {showInfo && (
-          <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-4 backdrop-blur-sm">
+          <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-4 backdrop-blur-sm rounded-b-lg">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-xl font-bold">{title}</h3>
