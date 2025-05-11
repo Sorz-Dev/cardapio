@@ -29,9 +29,9 @@ export default function Header({ dictionary }: HeaderProps) {
   return (
     <header className="relative w-auto">
       <div className="h-8 bg-[#FCA336]"></div>
-      <div className="h-16 bg-[#FFF9F1] dark:bg-zinc-900 relative place-content-center">
+      <div className="h-16 bg-[#FFF9F1] dark:bg-[#1D1D1D] relative place-content-center">
         <div className="container mx-auto px-4 flex justify-between place-items-center">
-          <Link href={`/${locale}`} className="relative h-8">
+          <Link href={`/${locale}`} className="relative h-8" scroll={true}>
             {mounted ? (
               theme === "dark" ? (
                 // Logo para modo escuro

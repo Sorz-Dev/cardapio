@@ -436,47 +436,56 @@ export const menuItems: MenuItem[] = [
 
 // Função para obter itens por seção com tradução
 export function getItemsBySection(section: MenuSection, locale: Locale): (MenuItem & MenuItemTranslation)[] {
+  // Make sure locale is valid, default to 'pt' if not
+  const safeLocale: Locale = ["pt", "en"].includes(locale as Locale) ? (locale as Locale) : "pt"
+
   return menuItems
     .filter((item) => item.section === section)
     .sort((a, b) => {
-      // Primeiro por prioridade (maior para menor)
+      // First by priority (higher to lower)
       if (b.priority !== a.priority) {
         return b.priority - a.priority
       }
-      // Depois por ordem alfabética (usando o título traduzido)
-      return a.translations[locale].title.localeCompare(b.translations[locale].title)
+      // Then alphabetically by title
+      return a.translations[safeLocale].title.localeCompare(b.translations[safeLocale].title)
     })
     .map((item) => ({
       ...item,
-      ...item.translations[locale],
+      ...item.translations[safeLocale],
     }))
 }
 
 // Função para obter itens em destaque com tradução
 export function getFeaturedItems(locale: Locale): (MenuItem & MenuItemTranslation)[] {
+  // Make sure locale is valid, default to 'pt' if not
+  const safeLocale: Locale = ["pt", "en"].includes(locale as Locale) ? (locale as Locale) : "pt"
+
   return menuItems
     .filter((item) => item.featured)
     .sort((a, b) => {
-      // Primeiro por prioridade (maior para menor)
+      // First by priority (higher to lower)
       if (b.priority !== a.priority) {
         return b.priority - a.priority
       }
-      // Depois por ordem alfabética (usando o título traduzido)
-      return a.translations[locale].title.localeCompare(b.translations[locale].title)
+      // Then alphabetically by title
+      return a.translations[safeLocale].title.localeCompare(b.translations[safeLocale].title)
     })
     .map((item) => ({
       ...item,
-      ...item.translations[locale],
+      ...item.translations[safeLocale],
     }))
 }
 
 // Função para obter um item por ID com tradução
 export function getItemById(id: string, locale: Locale): (MenuItem & MenuItemTranslation) | undefined {
+  // Make sure locale is valid, default to 'pt' if not
+  const safeLocale: Locale = ["pt", "en"].includes(locale as Locale) ? (locale as Locale) : "pt"
+
   const item = menuItems.find((item) => item.id === id)
   if (!item) return undefined
 
   return {
     ...item,
-    ...item.translations[locale],
+    ...item.translations[safeLocale],
   }
 }

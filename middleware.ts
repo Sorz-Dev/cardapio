@@ -12,8 +12,14 @@ function getLocale(request: NextRequest): string {
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
   // Use negotiator and intl-localematcher to get the best locale
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
-  return match(languages, locales, defaultLocale)
+  try {
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
+    return match(languages, locales, defaultLocale)
+  } catch (error) {
+    // If there's an error in the matching process, return the default locale
+    console.error("Error matching locale:", error)
+    return defaultLocale
+  }
 }
 
 export function middleware(request: NextRequest) {
@@ -28,8 +34,13 @@ export function middleware(request: NextRequest) {
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request)
 
+    // Make sure we have a clean pathname before redirecting
+    const cleanPathname = pathname.replace(/\/undefined$/, "")
+
     // Redirect to the same pathname but with the detected locale
-    return NextResponse.redirect(new URL(`/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`, request.url))
+    return NextResponse.redirect(
+      new URL(`/${locale}${cleanPathname.startsWith("/") ? "" : "/"}${cleanPathname}`, request.url),
+    )
   }
 }
 

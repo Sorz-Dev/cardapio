@@ -1,19 +1,21 @@
 "use client"
 
-import Image from "next/image"
+import Link from "next/link"
+import { useLanguage } from "./language-provider"
 
 interface FooterProps {
   dictionary: {
     footer: {
-      imageAlt: string
-      developedBy: string
-      by: string
       copyright: string
+      terms: string
+      privacy: string
     }
   }
 }
 
 export default function Footer({ dictionary }: FooterProps) {
+  const { locale } = useLanguage()
+
   return (
     <>
       {/* Mapa */}
@@ -34,19 +36,33 @@ export default function Footer({ dictionary }: FooterProps) {
         </div>
       </div>
 
-      {/* Copyright e Créditos */}
-      <footer className="w-full bg-stone-900 text-white py-4">
-        <div className="container mx-auto px-4 gap-2 flex flex-col md:flex-row justify-between items-start md:items-center">
-          <p className="text-sm">Copyright © 2020 Modelo de Cardápio. Todos os direitos reservados.</p>
-          <div className="flex items-center gap-2 md:mt-0 self-start">
-            <p className="text-sm">Desenvolvido por</p>
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-BQ5tziG65JihZU29nV0cNudcWgb3IX.webp"
-              alt="Sorz Logo"
-              width={40}
-              height={30}
-              className="h-3 w-auto"
-            />
+      {/* Copyright e Links */}
+      <footer className="w-full bg-black text-gray-400 py-4">
+        <div className="container mx-auto px-4">
+          {/* Mobile layout (vertical) */}
+          <div className="flex flex-col items-center md:hidden">
+            <p className="text-sm mb-2">{dictionary.footer.copyright}</p>
+            <div className="flex items-center gap-4">
+              <Link href={`/${locale}/terms`} className="text-sm text-white hover:underline" scroll={true}>
+                {dictionary.footer.terms}
+              </Link>
+              <Link href={`/${locale}/privacy`} className="text-sm text-white hover:underline" scroll={true}>
+                {dictionary.footer.privacy}
+              </Link>
+            </div>
+          </div>
+
+          {/* Tablet and Desktop layout (horizontal) */}
+          <div className="hidden md:flex justify-between items-center">
+            <p className="text-sm">{dictionary.footer.copyright}</p>
+            <div className="flex items-center gap-6">
+              <Link href={`/${locale}/terms`} className="text-sm text-white hover:underline" scroll={true}>
+                {dictionary.footer.terms}
+              </Link>
+              <Link href={`/${locale}/privacy`} className="text-sm text-white hover:underline" scroll={true}>
+                {dictionary.footer.privacy}
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

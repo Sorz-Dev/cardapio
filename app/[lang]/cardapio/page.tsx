@@ -2,12 +2,13 @@ import Image from "next/image"
 import { getDictionary } from "@/dictionaries"
 import MenuItem from "@/components/menu-item"
 import { getItemsBySection } from "@/data/menu-items"
-import ScrollToTop from "@/components/scroll-to-top"
-
+import { locales, defaultLocale } from "@/i18n"
 
 export default async function MenuPage({ params }: { params: { lang: string } }) {
-  const dict = await getDictionary(params.lang)
-  const locale = params.lang as "pt" | "en"
+  // Ensure we have a valid locale, defaulting to 'pt' if not
+  const lang = params.lang && locales.includes(params.lang as any) ? params.lang : defaultLocale
+  const dict = await getDictionary(lang)
+  const locale = lang as "pt" | "en"
 
   const pizzaItems = getItemsBySection("pizzas", locale)
   const lancheItems = getItemsBySection("lanches", locale)
@@ -15,9 +16,6 @@ export default async function MenuPage({ params }: { params: { lang: string } })
 
   return (
     <div className="flex flex-col items-center w-full">
-      {/* Componente para resetar o scroll */}
-      <ScrollToTop />
-
       {/* Hero Section */}
       <div
         className="w-full h-[520px] bg-cover bg-center flex items-center justify-center"
@@ -46,10 +44,11 @@ export default async function MenuPage({ params }: { params: { lang: string } })
       {/* Pizzas Section */}
       <section className="container mx-auto px-4 py-8">
         <div
-          className="w-full h-[60px] rounded-md bg-rose-600 dark:bg-rose-700 flex items-center justify-center mb-4"
+          className="w-full h-[60px] rounded-md overflow-hidden bg-rose-600 dark:bg-rose-700 flex items-center justify-center mb-4"
           style={{
             backgroundImage:
               "url(https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/menu-sections/pizzas-b4BCPCHCHdmFEJz8w7qf6KI9A3tgx1.jpg)",
+            borderRadius: "0.375rem", // Garante que todos os cantos tenham o mesmo raio
           }}
         >
           <h2 className="text-3xl text-white font-bold">{dict.menu.categories.pizzas}</h2>
@@ -65,10 +64,11 @@ export default async function MenuPage({ params }: { params: { lang: string } })
       {/* Burgers Section */}
       <section className="container mx-auto px-4 py-2">
         <div
-          className="w-full h-[60px] rounded-md bg-orange-700 dark:bg-orange-800 flex items-center justify-center mb-4"
+          className="w-full h-[60px] rounded-md overflow-hidden bg-orange-700 dark:bg-orange-800 flex items-center justify-center mb-4"
           style={{
             backgroundImage:
               "url(https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/menu-sections/lanches-9N0hPwSBGAgpzvYZkPbv7UB32TADgM.jpg)",
+            borderRadius: "0.375rem", // Garante que todos os cantos tenham o mesmo raio
           }}
         >
           <h2 className="text-3xl text-white font-bold">{dict.menu.categories.burgers}</h2>
@@ -84,10 +84,11 @@ export default async function MenuPage({ params }: { params: { lang: string } })
       {/* Portions Section */}
       <section className="container mx-auto px-4 py-8">
         <div
-          className="w-full h-[60px] rounded-md bg-purple-800 dark:bg-purple-900 flex items-center justify-center mb-4"
+          className="w-full h-[60px] rounded-md overflow-hidden bg-purple-800 dark:bg-purple-900 flex items-center justify-center mb-4"
           style={{
             backgroundImage:
               "url(https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/menu-sections/porcoes-D0ogwEV4yVdWASQvcPmmfIRr5SKciK.jpg)",
+            borderRadius: "0.375rem", // Garante que todos os cantos tenham o mesmo raio
           }}
         >
           <h2 className="text-3xl text-white font-bold">{dict.menu.categories.portions}</h2>

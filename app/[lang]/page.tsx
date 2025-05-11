@@ -4,10 +4,13 @@ import { getDictionary } from "@/dictionaries"
 import MenuItem from "@/components/menu-item"
 import { Button } from "@/components/ui/button"
 import { getFeaturedItems } from "@/data/menu-items"
+import { locales, defaultLocale } from "@/i18n"
 
 export default async function Home({ params }: { params: { lang: string } }) {
-  const dict = await getDictionary(params.lang)
-  const featuredItems = getFeaturedItems(params.lang as "pt" | "en")
+  // Ensure we have a valid locale, defaulting to 'pt' if not
+  const lang = params.lang && locales.includes(params.lang as any) ? params.lang : defaultLocale
+  const dict = await getDictionary(lang)
+  const featuredItems = getFeaturedItems(lang as "pt" | "en")
 
   return (
     <div className="flex flex-col items-center w-full">
@@ -85,7 +88,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
         </div>
 
         <Link href={`/${params.lang}/cardapio`} scroll={true}>
-          <Button className="bg-[#FCA336] hover:[#FF9C20] text-white rounded-2xl px-6 py-3 text-xl">
+          <Button className="bg-[#FCA336] hover:bg-[#FF9C20] text-white rounded-2xl px-6 py-3 text-xl">
             {dict.menu.fullMenu}
           </Button>
         </Link>

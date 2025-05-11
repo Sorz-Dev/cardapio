@@ -28,57 +28,21 @@ Fresco é um cardápio digital responsivo para restaurantes, desenvolvido com Ne
 - 🍕 **Categorias de Menu**: Organização por tipos de alimentos (pizzas, lanches, porções)
 - 🔍 **Detalhes dos Produtos**: Descrições detalhadas, preços e informações adicionais
 
-### Instalação e Execução
+## ⚠️ Aviso Legal
 
-\`\`\`bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/fresco-cardapio.git
+**Este repositório é apenas para fins de demonstração e portfólio profissional.**
 
-# Entre no diretório do projeto
-cd fresco-cardapio
+Este código não é licenciado para uso, modificação ou distribuição. Todos os direitos reservados.
+O repositório está público apenas para permitir a visualização do código como parte de um portfólio profissional.
 
-# Instale as dependências
-npm install
+## 📞 Contato
 
-# Execute o servidor de desenvolvimento
-npm run dev
-\`\`\`
+Para questões, sugestões ou colaborações, entre em contato:
 
-Acesse `http://localhost:3000` no seu navegador para ver o aplicativo em execução.
-
-### Estrutura do Projeto
-
-\`\`\`
-fresco-cardapio/
-├── app/                    # Diretório principal do App Router
-│   ├── [lang]/             # Rotas dinâmicas para idiomas
-│   │   ├── cardapio/       # Página do cardápio completo
-│   │   └── page.tsx        # Página inicial
-├── components/             # Componentes reutilizáveis
-│   ├── tags/               # Componentes de tags (status, tamanho, desconto)
-│   ├── ui/                 # Componentes de UI (shadcn)
-│   └── ...                 # Outros componentes
-├── data/                   # Dados do cardápio
-├── dictionaries/           # Arquivos de tradução
-├── hooks/                  # Hooks personalizados
-├── lib/                    # Utilitários e funções auxiliares
-├── middleware.ts           # Middleware para roteamento de idiomas
-└── ...
-\`\`\`
-
-### Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
-
-### Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
+- Email: soarxz.dev@gmail.com
+- WhatsApp: +55 19 99881-7808
+- [LinkedIn](https://www.linkedin.com/in/bruno-soares-7885311b2/)
+- [GitHub](https://github.com/Sorz-Dev)
 
 ---
 
@@ -108,54 +72,18 @@ Fresco is a responsive digital menu for restaurants, developed with Next.js and 
 - 🍕 **Menu Categories**: Organization by food types (pizzas, burgers, portions)
 - 🔍 **Product Details**: Detailed descriptions, prices, and additional information
 
-### Installation and Execution
+## ⚠️ Legal Notice
 
-\`\`\`bash
-# Clone the repository
-git clone https://github.com/your-username/fresco-menu.git
+**This repository is for demonstration and professional portfolio purposes only.**
 
-# Enter the project directory
-cd fresco-menu
+This code is not licensed for use, modification, or distribution. All rights reserved.
+The repository is public only to allow viewing of the code as part of a professional portfolio.
 
-# Install dependencies
-npm install
+## 📞 Contact
 
-# Run the development server
-npm run dev
-\`\`\`
+For questions, suggestions, or collaborations, please contact:
 
-Access `http://localhost:3000` in your browser to see the application running.
-
-### Project Structure
-
-\`\`\`
-fresco-menu/
-├── app/                    # Main App Router directory
-│   ├── [lang]/             # Dynamic routes for languages
-│   │   ├── cardapio/       # Full menu page
-│   │   └── page.tsx        # Home page
-├── components/             # Reusable components
-│   ├── tags/               # Tag components (status, size, discount)
-│   ├── ui/                 # UI components (shadcn)
-│   └── ...                 # Other components
-├── data/                   # Menu data
-├── dictionaries/           # Translation files
-├── hooks/                  # Custom hooks
-├── lib/                    # Utilities and helper functions
-├── middleware.ts           # Middleware for language routing
-└── ...
-\`\`\`
-
-### Contributions
-
-Contributions are welcome! Feel free to open issues or send pull requests.
-
-1. Fork the project
-2. Create a branch for your feature (`git checkout -b feature/new-functionality`)
-3. Commit your changes (`git commit -m 'Add new functionality'`)
-4. Push to the branch (`git push origin feature/new-functionality`)
-5. Open a Pull Request
-
-### License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+- Email: soarxz.dev@gmail.com
+- WhatsApp: +55 19 99881-7808
+- [LinkedIn](https://www.linkedin.com/in/bruno-soares-7885311b2/)
+- [GitHub](https://github.com/Sorz-Dev)

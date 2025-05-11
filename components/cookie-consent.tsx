@@ -73,7 +73,7 @@ export function CookieConsent({ locale, translations, onClose, forceShow = false
             <h3 className="text-lg font-semibold mb-2 text-white">{translations.title}</h3>
             <p className="text-sm text-gray-300 mb-2">{translations.description}</p>
             <p className="text-xs text-gray-400">
-              <Link href={`/${locale}${translations.privacyPolicyLink}`} className="underline hover:text-primary">
+              <Link href={`/${locale}/privacy`} className="underline hover:text-amber-400">
                 {translations.privacyPolicy}
               </Link>
             </p>
@@ -87,7 +87,7 @@ export function CookieConsent({ locale, translations, onClose, forceShow = false
             >
               {translations.reject}
             </Button>
-            <Button size="sm" onClick={acceptCookies}>
+            <Button size="sm" onClick={acceptCookies} className="bg-[#FCA336] hover:bg-[#FF9C20] text-white">
               {translations.accept}
             </Button>
           </div>

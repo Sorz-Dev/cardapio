@@ -11,6 +11,7 @@ import "../globals.css"
 import SkewProtection from "@/components/skew-protection"
 import type { Locale } from "@/i18n"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import ScrollToTop from "@/components/scroll-to-top"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const josefinSans = Josefin_Sans({
@@ -64,9 +65,10 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
-        className={`${inter.variable} ${josefinSans.variable} ${berkshireSwash.variable} ${mulish.variable} ${alfaSlabOne.variable} ${ultra.variable} font-sans bg-[#FFF9F1] dark:bg-zinc-900`}
+        className={`${inter.variable} ${josefinSans.variable} ${berkshireSwash.variable} ${mulish.variable} ${alfaSlabOne.variable} ${ultra.variable} font-sans bg-[#FFF9F1] dark:bg-[#1D1D1D]`}
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <ScrollToTop />
           <LanguageProvider initialLocale={params.lang}>
             <SkewProtection />
             <div className="flex min-h-screen flex-col">
