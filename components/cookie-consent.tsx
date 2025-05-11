@@ -1,84 +1,104 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
+import Link from "next/link"
+import type { Locale } from "@/i18n"
 
-export default function CookieConsent() {
+interface CookieConsentProps {
+  locale: Locale
+  translations: {
+    title: string
+    description: string
+    accept: string
+    reject: string
+    privacyPolicy: string
+    privacyPolicyLink: string
+  }
+  onClose?: () => void
+  forceShow?: boolean
+}
+
+export function CookieConsent({ locale, translations, onClose, forceShow = false }: CookieConsentProps) {
   const [showConsent, setShowConsent] = useState(false)
 
   useEffect(() => {
-    // Verificar se o usuário já aceitou os cookies
+    // Verificar se o usuário já deu consentimento
     const consent = localStorage.getItem("cookie-consent")
-    if (!consent) {
+    if (!consent || forceShow) {
       setShowConsent(true)
     }
-  }, [])
+  }, [forceShow])
+
+  // Atualizar quando forceShow mudar
+  useEffect(() => {
+    if (forceShow) {
+      setShowConsent(true)
+    }
+  }, [forceShow])
 
   const acceptCookies = () => {
     localStorage.setItem("cookie-consent", "accepted")
     setShowConsent(false)
+
+    // Disparar evento para notificar outros componentes
+    window.dispatchEvent(new Event("storage"))
+
+    if (onClose) onClose()
   }
 
   const rejectCookies = () => {
     localStorage.setItem("cookie-consent", "rejected")
     setShowConsent(false)
+
+    // Disparar evento para notificar outros componentes
+    window.dispatchEvent(new Event("storage"))
+
+    if (onClose) onClose()
   }
 
-  const closeConsent = () => {
+  const handleClose = () => {
     setShowConsent(false)
+    if (onClose) onClose()
   }
 
   if (!showConsent) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-[#1d1d1d] text-white p-4 z-50">
-      <div className="container mx-auto max-w-6xl px-4 relative">
-        <button
-          onClick={closeConsent}
-          className="absolute right-4 top-0 text-white hover:text-gray-300"
-          aria-label="Fechar"
-        >
-          <X size={24} />
-        </button>
-
-        <div className="pr-8">
-          <h2 className="text-xl font-medium mb-2">Este site usa cookies</h2>
-
-          <p className="text-sm mb-4">
-            Utilizamos cookies para melhorar sua experiência de navegação, personalizar conteúdo e anúncios, e analisar
-            nosso tráfego. Ao continuar navegando, você concorda com o uso de cookies.
-          </p>
-
-          <div className="flex items-center">
-            <Link href="/politica-de-privacidade" className="text-sm text-gray-300 hover:underline mr-auto">
-              Saiba mais em nossa Política de Privacidade
-            </Link>
-
-            <div className="flex gap-2">
-              <button
-                onClick={rejectCookies}
-                className="px-4 py-2 text-sm font-medium text-white bg-transparent border border-gray-600 rounded hover:bg-gray-800"
-              >
-                Rejeitar
-              </button>
-
-              <button
-                onClick={closeConsent}
-                className="px-4 py-2 text-sm font-medium text-white bg-transparent border border-gray-600 rounded hover:bg-gray-800"
-              >
-                Configurações
-              </button>
-
-              <button
-                onClick={acceptCookies}
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700"
-              >
-                Aceitar todos
-              </button>
-            </div>
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 bg-[#252525] border-t border-gray-800 shadow-lg">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold mb-2 text-white">{translations.title}</h3>
+            <p className="text-sm text-gray-300 mb-2">{translations.description}</p>
+            <p className="text-xs text-gray-400">
+              <Link href={`/${locale}${translations.privacyPolicyLink}`} className="underline hover:text-primary">
+                {translations.privacyPolicy}
+              </Link>
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={rejectCookies}
+              className="text-white border-gray-600 hover:bg-gray-700 hover:text-white"
+            >
+              {translations.reject}
+            </Button>
+            <Button size="sm" onClick={acceptCookies}>
+              {translations.accept}
+            </Button>
           </div>
         </div>
+        <button
+          onClick={handleClose}
+          className="absolute top-2 right-2 text-gray-400 hover:text-white"
+          aria-label="Fechar"
+        >
+          <X size={20} />
+        </button>
       </div>
     </div>
   )

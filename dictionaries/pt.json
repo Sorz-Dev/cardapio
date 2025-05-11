@@ -46,9 +46,9 @@
   "cookies": {
     "title": "Este site usa cookies",
     "description": "Utilizamos cookies para melhorar sua experiência de navegação, personalizar conteúdo e anúncios, e analisar nosso tráfego. Ao continuar navegando, você concorda com o uso de cookies.",
-    "learnMore": "Saiba mais em nossa Política de Privacidade",
     "accept": "Aceitar todos",
     "reject": "Rejeitar",
-    "privacyPolicy": "Política de Privacidade"
+    "privacyPolicy": "Política de Privacidade",
+    "privacyPolicyLink": "/politica-de-privacidade"
   }
 }

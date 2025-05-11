@@ -46,9 +46,9 @@
   "cookies": {
     "title": "This site uses cookies",
     "description": "We use cookies to improve your browsing experience, personalize content and ads, and analyze our traffic. By continuing to browse, you agree to the use of cookies.",
-    "learnMore": "Learn more in our Privacy Policy",
     "accept": "Accept all",
     "reject": "Reject",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "privacyPolicyLink": "/privacy-policy"
   }
 }

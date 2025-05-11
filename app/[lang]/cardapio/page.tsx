@@ -4,6 +4,7 @@ import MenuItem from "@/components/menu-item"
 import { getItemsBySection } from "@/data/menu-items"
 import ScrollToTop from "@/components/scroll-to-top"
 
+
 export default async function MenuPage({ params }: { params: { lang: string } }) {
   const dict = await getDictionary(params.lang)
   const locale = params.lang as "pt" | "en"

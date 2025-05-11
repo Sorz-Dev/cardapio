@@ -5,10 +5,12 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/components/language-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import LocalizedCookieConsent from "@/components/localized-cookie-consent"
+import { CookieConsent } from "@/components/cookie-consent"
 import { getDictionary } from "@/dictionaries"
 import "../globals.css"
 import SkewProtection from "@/components/skew-protection"
+import type { Locale } from "@/i18n"
+import { WhatsAppButton } from "@/components/whatsapp-button"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const josefinSans = Josefin_Sans({
@@ -71,8 +73,19 @@ export default async function RootLayout({
               <Header dictionary={dictionary} />
               <main className="flex-1">{children}</main>
               <Footer dictionary={dictionary} />
+              <WhatsAppButton locale={params.lang as Locale} />
+              <CookieConsent
+                locale={params.lang as Locale}
+                translations={{
+                  title: dictionary.cookies.title,
+                  description: dictionary.cookies.description,
+                  accept: dictionary.cookies.accept,
+                  reject: dictionary.cookies.reject,
+                  privacyPolicy: dictionary.cookies.privacyPolicy,
+                  privacyPolicyLink: dictionary.cookies.privacyPolicyLink,
+                }}
+              />
             </div>
-            <LocalizedCookieConsent dictionary={dictionary} />
           </LanguageProvider>
         </ThemeProvider>
       </body>
