@@ -107,8 +107,10 @@ export default function ItemLightbox({ isOpen, onClose, item, dictionary }: Item
             alt={title}
             width={1200}
             height={1200}
-            className="object-contain max-h-[90vh]"
+            className="object-contain max-h-[90vh] select-none"
             priority
+            unoptimized
+            onContextMenu={(e) => e.preventDefault()}
           />
         </div>
 

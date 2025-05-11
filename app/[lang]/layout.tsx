@@ -8,6 +8,7 @@ import Footer from "@/components/footer"
 import LocalizedCookieConsent from "@/components/localized-cookie-consent"
 import { getDictionary } from "@/dictionaries"
 import "../globals.css"
+import SkewProtection from "@/components/skew-protection"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const josefinSans = Josefin_Sans({
@@ -65,6 +66,7 @@ export default async function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <LanguageProvider initialLocale={params.lang}>
+            <SkewProtection />
             <div className="flex min-h-screen flex-col">
               <Header dictionary={dictionary} />
               <main className="flex-1">{children}</main>

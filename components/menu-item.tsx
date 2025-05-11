@@ -31,7 +31,7 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-md menu-item">
       {/* Layout para celular (vertical) */}
       <div className="sm:hidden flex flex-col w-full overflow-hidden">
         <div className="relative cursor-pointer p-1.5 w-full" onClick={() => setLightboxOpen(true)}>
