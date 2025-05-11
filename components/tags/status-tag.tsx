@@ -42,6 +42,7 @@ export default function StatusTag({ type, className = "", dictionary }: StatusTa
   const Icon = config.icon
   const label = dictionary.menu.status[config.labelKey as keyof typeof dictionary.menu.status]
 
+  // Garantir que as bordas estejam arredondadas em dispositivos móveis
   return (
     <div
       className={`inline-flex items-center gap-1 px-2 py-1 rounded-md ${config.bgColor} ${config.textColor} font-preco font-bold text-[8px] leading-[8px] ${className}`}

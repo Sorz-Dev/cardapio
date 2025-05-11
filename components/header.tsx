@@ -77,7 +77,7 @@ export default function Header({ dictionary }: HeaderProps) {
                   variant={l === locale ? "default" : "outline"}
                   size="sm"
                   onClick={() => setLocale(l)}
-                  className={l === locale ? "bg-[#FCA336] hover:bg-[#FF9C20]" : ""}
+                  className={`rounded-md ${l === locale ? "bg-[#FCA336] hover:bg-[#FF9C20]" : ""}`}
                 >
                   {l.toUpperCase()}
                 </Button>

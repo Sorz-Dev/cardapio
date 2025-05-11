@@ -12,10 +12,15 @@ export default function DiscountTag({ oldPrice, currentPrice, className = "" }: 
   // Calcular a porcentagem de desconto
   const discountPercent = Math.round(((oldPriceNum - currentPriceNum) / oldPriceNum) * 100)
 
-  // Aplicando as classes de fonte específicas
-  const mobileClasses = "sm:hidden font-preco font-black text-[8px] leading-[8px]"
-  const desktopClasses = "hidden sm:inline-flex font-preco font-black text-[6px] leading-[6px]"
+  // Modificar as classes para garantir que as bordas estejam arredondadas em dispositivos móveis
 
+  // Alterar a versão mobile para garantir bordas arredondadas
+  const mobileClasses = "sm:hidden font-preco font-black text-[8px] leading-[8px] rounded-sm"
+
+  // Alterar a versão desktop para garantir bordas arredondadas
+  const desktopClasses = "hidden sm:inline-flex font-preco font-black text-[6px] leading-[6px] rounded-sm"
+
+  // Remover a classe rounded-sm das divs para evitar duplicação
   return (
     <>
       {/* Versão mobile */}
