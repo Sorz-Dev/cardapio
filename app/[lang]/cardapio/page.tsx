@@ -43,7 +43,7 @@ export default async function MenuPage({ params }: { params: { lang: string } })
       </div>
 
       {/* Pizzas Section */}
-      <section className="container mx-auto px-4 py-8">
+      <section className="container mx-auto max-w-[1296px] px-4 md:px-10 lg:px-[60px] py-8">
         <div
           className="w-full h-[60px] rounded-md overflow-hidden bg-rose-600 dark:bg-rose-700 flex items-center justify-center mb-4"
           style={{
@@ -63,7 +63,7 @@ export default async function MenuPage({ params }: { params: { lang: string } })
       </section>
 
       {/* Burgers Section */}
-      <section className="container mx-auto px-4 py-2">
+      <section className="container mx-auto max-w-[1296px] px-4 md:px-10 lg:px-[60px] py-2">
         <div
           className="w-full h-[60px] rounded-md overflow-hidden bg-orange-700 dark:bg-orange-800 flex items-center justify-center mb-4"
           style={{
@@ -83,7 +83,7 @@ export default async function MenuPage({ params }: { params: { lang: string } })
       </section>
 
       {/* Portions Section */}
-      <section className="container mx-auto px-4 py-8">
+      <section className="container mx-auto max-w-[1296px] px-4 md:px-10 lg:px-[60px] py-8">
         <div
           className="w-full h-[60px] rounded-md overflow-hidden bg-purple-800 dark:bg-purple-900 flex items-center justify-center mb-4"
           style={{

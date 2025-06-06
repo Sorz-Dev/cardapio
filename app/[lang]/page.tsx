@@ -36,7 +36,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
       </div>
 
       {/* About Section */}
-      <section className="container mx-auto px-4 py-8 mb-2">
+      <section className="container mx-auto max-w-[1296px] px-4 md:px-10 lg:px-[60px] py-8 mb-2">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 h-fit">
           <div className="flex flex-col gap-2 h-fit self-center">
             <p className="text-xl">{dict.about.highlight}</p>
@@ -67,7 +67,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
       </section>
 
       {/* Menu Section */}
-      <section className="container mx-auto px-2 flex flex-col items-center mb-6 dark:mb-4">
+      <section className="container mx-auto max-w-[1296px] px-4 md:px-10 lg:px-[60px] flex flex-col items-center mb-6 dark:mb-4">
         <div className="flex flex-col items-center gap-2 mb-4">
           <Image
             src="https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/menu-leaf.png"

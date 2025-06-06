@@ -1,71 +1,135 @@
 "use client"
 
 import Link from "next/link"
-import { useLanguage } from "./language-provider"
+import { MapPin, Phone, Clock, Instagram, Facebook } from "lucide-react"
+import { useEffect, useRef } from "react"
 
-interface FooterProps {
-  dictionary: {
-    footer: {
-      copyright: string
-      terms: string
-      privacy: string
+export default function Footer() {
+  const mapRef = useRef<HTMLIFrameElement>(null)
+
+  // Iniciar o carregamento do mapa assim que o componente for montado
+  useEffect(() => {
+    // Garantir que o iframe do mapa comece a carregar imediatamente
+    if (mapRef.current) {
+      mapRef.current.setAttribute("loading", "eager")
+
+      // Opcionalmente, podemos adicionar um atributo fetchPriority para aumentar a prioridade
+      mapRef.current.setAttribute("fetchPriority", "high")
     }
-  }
-}
-
-export default function Footer({ dictionary }: FooterProps) {
-  const { locale } = useLanguage()
+  }, [])
 
   return (
-    <>
-      {/* Mapa */}
-      <div className="w-full bg-stone-900 pt-8 dark:pt-4 pb-4">
-        <div className="container mx-auto px-4">
+    <footer className="w-full bg-gray-950 text-white">
+      {/* Mapa (visível apenas em mobile) */}
+      <div className="w-full pt-8 pb-0 md:hidden">
+        <div className="max-w-[1124px] mx-auto px-4 md:px-10 lg:px-[60px]">
           <div className="w-full h-[400px] rounded-md overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14631.63126850389!2d-46.65384371442871!3d-23.550519899999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sCentro%20Hist%C3%B3rico%20de%20S%C3%A3o%20Paulo%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1715300267456!5m2!1spt-BR!2sbr"
+              ref={mapRef}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.173325904463!2d-47.16277008909088!3d-22.833076079220753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8bf3950fb5085%3A0xfd981968f9c778fd!2sR.%20Benedito%20Mateus%2C%20399%20-%20Jardim%20Santa%20Terezinha%20(Nova%20Veneza)%2C%20Sumar%C3%A9%20-%20SP%2C%2013180-220!5e0!3m2!1spt-BR!2sbr!4v1749234873529!5m2!1spt-BR!2sbr"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
-              loading="lazy"
+              loading="eager"
+              fetchPriority="high"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Mapa do Centro de São Paulo"
+              title="Mapa - Av. Emílio Bôsco, Parque Yolanda, Sumaré - SP"
             ></iframe>
           </div>
         </div>
       </div>
 
-      {/* Copyright e Links */}
-      <footer className="w-full bg-black text-gray-400 py-4">
-        <div className="container mx-auto px-4">
-          {/* Mobile layout (vertical) */}
-          <div className="flex flex-col items-center md:hidden">
-            <p className="text-sm mb-2">{dictionary.footer.copyright}</p>
-            <div className="flex items-center gap-4">
-              <Link href={`/${locale}/terms`} className="text-sm text-white hover:underline" scroll={true}>
-                {dictionary.footer.terms}
-              </Link>
-              <Link href={`/${locale}/privacy`} className="text-sm text-white hover:underline" scroll={true}>
-                {dictionary.footer.privacy}
-              </Link>
+      {/* Informações e redes sociais */}
+      <div className="max-w-[1124px] mx-auto px-4 md:px-10 lg:px-[60px] pt-[28px] pb-8 md:py-8">
+        <div className="flex flex-col md:flex-row md:justify-between">
+          {/* Coluna da esquerda - Informações */}
+          <div className="md:flex-1">
+            <h3 className="text-[#FF8904] text-[22px] md:text-[32px] font-bold mb-[24px] md:mb-6">Frésco</h3>
+
+            {/* Box com informações de contato */}
+            <div className="space-y-[20px] md:space-y-6 mb-[24px] md:mb-6">
+              <div className="flex items-start space-x-3">
+                <MapPin className="text-[#FF8904] mt-1 flex-shrink-0 h-5 w-5" />
+                <div>
+                  <p className="text-white text-base">R. Benedito Mateus, 399</p>
+                  <p className="text-gray-400 text-sm">Jardim Santa Terezinha (Nova Veneza),</p>
+                  <p className="text-gray-400 text-sm">Sumaré - SP, 13180-220</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <Phone className="text-[#FF8904] flex-shrink-0 h-5 w-5" />
+                <p className="text-white text-base">(19) 99000-2216</p>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <Clock className="text-[#FF8904] mt-1 flex-shrink-0 h-5 w-5" />
+                <div>
+                  <p className="text-white text-base">Horário de Funcionamento:</p>
+                  <p className="text-gray-400 text-sm">Qua-Dom: 18h às 02h</p>
+                  <p className="text-gray-400 text-sm">Segunda e Terça: Fechado</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Box com redes sociais */}
+            <div className="space-y-3">
+              <h3 className="text-[#FF8904] text-lg font-bold">Siga-nos</h3>
+              <div className="flex space-x-3">
+                <span
+                  className="bg-[#FF8904] rounded-full p-3 hover:bg-[#E17100] transition-colors cursor-default"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-5 w-5 text-white" />
+                </span>
+                <span
+                  className="bg-[#FF8904] rounded-full p-3 hover:bg-[#E17100] transition-colors cursor-default"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-5 w-5 text-white" />
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Tablet and Desktop layout (horizontal) */}
-          <div className="hidden md:flex justify-between items-center">
-            <p className="text-sm">{dictionary.footer.copyright}</p>
-            <div className="flex items-center gap-6">
-              <Link href={`/${locale}/terms`} className="text-sm text-white hover:underline" scroll={true}>
-                {dictionary.footer.terms}
+          {/* Coluna da direita - Mapa (visível apenas em tablet e desktop) */}
+          <div className="hidden md:block md:w-[45%] lg:w-[48%]">
+            <div className="w-full h-full rounded-md overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.173325904463!2d-47.16277008909088!3d-22.833076079220753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8bf3950fb5085%3A0xfd981968f9c778fd!2sR.%20Benedito%20Mateus%2C%20399%20-%20Jardim%20Santa%20Terezinha%20(Nova%20Veneza)%2C%20Sumar%C3%A9%20-%20SP%2C%2013180-220!5e0!3m2!1spt-BR!2sbr!4v1749234873529!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="eager"
+                fetchPriority="high"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa - Av. Emílio Bôsco, Parque Yolanda, Sumaré - SP"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright e links */}
+      <div className="border-t border-gray-800 py-6">
+        <div className="max-w-[1124px] mx-auto px-4 md:px-10 lg:px-[60px]">
+          <div className="flex flex-col md:flex-row justify-between">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0 text-left max-w-[200px] md:max-w-none">
+              © 2025 Frésco. Todos os direitos reservados.
+            </p>
+            <div className="flex w-full md:w-auto justify-between md:justify-end md:space-x-6">
+              <Link href="/terms" className="text-gray-400 text-sm hover:text-[#FF8904] transition-colors">
+                Termos de Uso
               </Link>
-              <Link href={`/${locale}/privacy`} className="text-sm text-white hover:underline" scroll={true}>
-                {dictionary.footer.privacy}
+              <Link href="/privacy" className="text-gray-400 text-sm hover:text-[#FF8904] transition-colors">
+                Política de Privacidade
               </Link>
             </div>
           </div>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   )
 }
