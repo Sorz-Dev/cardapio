@@ -19,7 +19,7 @@ export default function Footer({ dictionary }: FooterProps) {
   return (
     <>
       {/* Mapa */}
-      <div className="w-full bg-stone-900 pt-8 dark:pt-4 pb-2">
+      <div className="w-full bg-stone-900 pt-8 dark:pt-4 pb-4">
         <div className="container mx-auto px-4">
           <div className="w-full h-[400px] rounded-md overflow-hidden">
             <iframe

@@ -25,14 +25,14 @@ export default function DiscountTag({ oldPrice, currentPrice, className = "" }: 
     <>
       {/* Versão mobile */}
       <div
-        className={`inline-flex items-center justify-center px-1.5 py-0.5 bg-rose-600 text-white ${mobileClasses} ${className}`}
+        className={`inline-flex items-center justify-center px-1.5 py-0.5 bg-[#FCA336] text-white ${mobileClasses} ${className}`}
       >
         -{discountPercent}%
       </div>
 
       {/* Versão desktop */}
       <div
-        className={`inline-flex items-center justify-center px-1.5 py-0.5 bg-rose-600 text-white ${desktopClasses} ${className}`}
+        className={`inline-flex items-center justify-center px-1.5 py-0.5 bg-[#FCA336] text-white ${desktopClasses} ${className}`}
       >
         -{discountPercent}%
       </div>

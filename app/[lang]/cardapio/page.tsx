@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { getDictionary } from "@/dictionaries"
+// Update the import to use the new component
 import MenuItem from "@/components/menu-item"
 import { getItemsBySection } from "@/data/menu-items"
 import { locales, defaultLocale } from "@/i18n"

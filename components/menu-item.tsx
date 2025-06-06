@@ -3,6 +3,9 @@
 import { useState } from "react"
 import Image from "next/image"
 import ItemLightbox from "@/components/item-lightbox"
+import StatusTag from "@/components/tags/status-tag"
+import SizeTag from "@/components/tags/size-tag"
+import DiscountTag from "@/components/tags/discount-tag"
 import type { MenuItem as MenuItemType } from "@/data/menu-items"
 
 interface MenuItemProps {
@@ -25,7 +28,7 @@ interface MenuItemProps {
 
 export default function MenuItem({ item, dictionary }: MenuItemProps) {
   const { title, description, price, oldPrice, image, status, size } = item
-  const hasPromotion = status === "promocao" && oldPrice
+  const hasPromotion = oldPrice && price < oldPrice
 
   // Estado para controlar a abertura do lightbox
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -47,21 +50,9 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
           </div>
 
           {/* Status tag posicionado no canto superior esquerdo da imagem */}
-          {status === "promocao" && (
+          {status && (
             <div className="absolute top-3 left-3">
-              <div className="bg-blue-700 text-white font-preco font-bold text-[8px] leading-[8px] py-0.5 px-2 rounded-md flex items-center">
-                <span className="mr-1">%</span>
-                Promoção
-              </div>
-            </div>
-          )}
-
-          {/* Tag de tamanho no canto inferior direito */}
-          {size && (
-            <div className="absolute bottom-2 right-2">
-              <div className="bg-teal-500 text-white font-alfaSlab text-[7px] leading-[7px] px-2 py-0.5 rounded-md">
-                {dictionary.menu.sizes[size === "grande" ? "large" : size === "media" ? "medium" : "small"]}
-              </div>
+              <StatusTag type={status} dictionary={dictionary} />
             </div>
           )}
         </div>
@@ -72,9 +63,16 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
             {description}
           </p>
 
-          {/* Preço atual */}
-          <div className="flex items-center mt-1">
-            <span className="text-[#FCA336] font-preco font-bold text-[13px] leading-[13px]">R$ {price}</span>
+          {/* Preço atual e tag de tamanho */}
+          <div className="flex items-center mt-1 justify-between">
+            <div className="flex items-center">
+              <span className="text-[#FCA336] font-preco font-bold text-[13px] leading-[13px]">R$ {price}</span>
+              {size && (
+                <div className="ml-2">
+                  <SizeTag size={size} dictionary={dictionary} />
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Preço antigo */}
@@ -85,15 +83,7 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
               </span>
 
               {/* Discount tag */}
-              <div className="bg-rose-600 text-white font-preco font-black text-[8px] leading-[8px] px-1.5 py-0.5 rounded-sm">
-                -
-                {Math.round(
-                  ((Number.parseFloat(oldPrice.replace(",", ".")) - Number.parseFloat(price.replace(",", "."))) /
-                    Number.parseFloat(oldPrice.replace(",", "."))) *
-                    100,
-                )}
-                %
-              </div>
+              <DiscountTag oldPrice={oldPrice} currentPrice={price} />
             </div>
           )}
         </div>
@@ -114,12 +104,9 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
           </div>
 
           {/* Status tag posicionado no canto superior esquerdo da imagem */}
-          {status === "promocao" && (
+          {status && (
             <div className="absolute top-3 left-3">
-              <div className="bg-blue-700 text-white font-preco font-bold text-[8px] leading-[8px] py-0.5 px-2 rounded-md flex items-center">
-                <span className="mr-1">%</span>
-                Promoção
-              </div>
+              <StatusTag type={status} dictionary={dictionary} />
             </div>
           )}
         </div>
@@ -130,17 +117,16 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
             {description}
           </p>
 
-          <div className="flex items-center mt-1">
-            <span className="text-[#FCA336] font-preco font-bold text-[14px] leading-[14px]">R$ {price}</span>
-
-            {/* Tag de tamanho */}
-            {size && (
-              <div className="ml-2">
-                <div className="bg-teal-500 text-white font-alfaSlab text-[8px] leading-[8px] px-2 py-0.5 rounded-md">
-                  {dictionary.menu.sizes[size === "grande" ? "large" : size === "media" ? "medium" : "small"]}
+          <div className="flex items-center mt-1 justify-between">
+            <div className="flex items-center">
+              <span className="text-[#FCA336] font-preco font-bold text-[14px] leading-[14px]">R$ {price}</span>
+              {/* Tag de tamanho ao lado do preço */}
+              {size && (
+                <div className="ml-2">
+                  <SizeTag size={size} dictionary={dictionary} />
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
           {/* Preço antigo e discount tag */}
@@ -149,17 +135,7 @@ export default function MenuItem({ item, dictionary }: MenuItemProps) {
               <span className="font-preco font-bold text-[10px] leading-[10px] text-gray-500 line-through">
                 R$ {oldPrice}
               </span>
-
-              {/* Discount tag */}
-              <div className="bg-rose-600 text-white font-preco font-black text-[6px] leading-[6px] px-1.5 py-0.5 rounded-sm">
-                -
-                {Math.round(
-                  ((Number.parseFloat(oldPrice.replace(",", ".")) - Number.parseFloat(price.replace(",", "."))) /
-                    Number.parseFloat(oldPrice.replace(",", "."))) *
-                    100,
-                )}
-                %
-              </div>
+              <DiscountTag oldPrice={oldPrice} currentPrice={price} />
             </div>
           )}
         </div>

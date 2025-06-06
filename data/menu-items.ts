@@ -43,7 +43,7 @@ export const menuItems: MenuItem[] = [
     status: "novidade",
     size: "media",
     featured: true,
-    priority: 0,
+    priority: 2, // Prioridade alta para aparecer primeiro
   },
   {
     id: "bacon-ovo",
@@ -84,7 +84,7 @@ export const menuItems: MenuItem[] = [
     section: "pizzas",
     status: "promocao",
     size: "media",
-    featured: true,
+    featured: false, // Removido dos destaques conforme a imagem
     priority: 0,
   },
   {
@@ -124,8 +124,8 @@ export const menuItems: MenuItem[] = [
       "https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/products/carne-seca-cream-cheese-S8EnAjfeePbMEUPPi3tG0Sm47aHG6a.jpg",
     section: "pizzas",
     size: "media",
-    featured: false,
-    priority: 0,
+    featured: true,
+    priority: 1, // Prioridade média para aparecer na segunda linha
   },
   {
     id: "portuguesa",
@@ -208,7 +208,7 @@ export const menuItems: MenuItem[] = [
     section: "lanches",
     status: "promocao",
     featured: true,
-    priority: 0,
+    priority: 2, // Prioridade alta para aparecer primeiro
   },
   {
     id: "salada-especial",
@@ -264,8 +264,8 @@ export const menuItems: MenuItem[] = [
     image:
       "https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/products/bacon-piry-dMbYvTKvcge6mLqjthYjCxb5Mnq7j8.jpg",
     section: "lanches",
-    featured: false,
-    priority: 0,
+    featured: true,
+    priority: 1, // Prioridade média para aparecer na segunda linha
   },
 
   // PORÇÕES
@@ -363,13 +363,12 @@ export const menuItems: MenuItem[] = [
           "Delicious sausage flambéed in cachaça, served with vinaigrette, farofa, bread basket and our original garlic cream.",
       },
     },
-    price: "45,90",
+    price: "59,90", // Preço atualizado para 59,90 conforme a imagem
     image:
       "https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/products/linguica-na-cachaca-lvSY6JeXhcZdnjIonnQW5SWoPnx6gE.jpg",
     section: "porcoes",
-    status: "limitado",
     featured: true,
-    priority: 0,
+    priority: 2, // Prioridade alta para aparecer primeiro
   },
   {
     id: "batata-queijos-bacon",
@@ -407,9 +406,8 @@ export const menuItems: MenuItem[] = [
     image:
       "https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/products/cebola-australiana-suprema-kNWIiUcLJETzyoTI5gbgHGxNmUgfNO.jpg",
     section: "porcoes",
-    status: "limitado",
     featured: true,
-    priority: 0,
+    priority: 1, // Prioridade média para aparecer na segunda linha
   },
   {
     id: "tabua-do-jorge",
@@ -428,7 +426,6 @@ export const menuItems: MenuItem[] = [
     image:
       "https://d7hd88ngyqaw6jtz.public.blob.vercel-storage.com/restaurants/oficina-do-sabor/products/tabua-do-jorge-4SzNaR4MSdB2JSVRKNStkGRaLlRMB0.jpg",
     section: "porcoes",
-    status: "limitado",
     featured: false,
     priority: 0,
   },
@@ -457,17 +454,26 @@ export function getItemsBySection(section: MenuSection, locale: Locale): (MenuIt
 
 // Função para obter itens em destaque com tradução
 export function getFeaturedItems(locale: Locale): (MenuItem & MenuItemTranslation)[] {
-  // Make sure locale is valid, default to 'pt' if not
   const safeLocale: Locale = ["pt", "en"].includes(locale as Locale) ? (locale as Locale) : "pt"
+  const sectionOrder: MenuSection[] = ["pizzas", "lanches", "porcoes"]
 
   return menuItems
     .filter((item) => item.featured)
     .sort((a, b) => {
-      // First by priority (higher to lower)
+      // 1. Sort by section order
+      const aSectionIndex = sectionOrder.indexOf(a.section)
+      const bSectionIndex = sectionOrder.indexOf(b.section)
+
+      if (aSectionIndex !== bSectionIndex) {
+        return aSectionIndex - bSectionIndex
+      }
+
+      // 2. Then by priority (higher to lower)
       if (b.priority !== a.priority) {
         return b.priority - a.priority
       }
-      // Then alphabetically by title
+
+      // 3. Then alphabetically by title
       return a.translations[safeLocale].title.localeCompare(b.translations[safeLocale].title)
     })
     .map((item) => ({
