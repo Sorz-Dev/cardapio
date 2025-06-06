@@ -22,7 +22,7 @@ export default function Footer() {
     <footer className="w-full bg-gray-950 text-white">
       {/* Mapa (visível apenas em mobile) */}
       <div className="w-full pt-8 pb-0 md:hidden">
-        <div className="max-w-[1124px] mx-auto px-4 md:px-10 lg:px-[60px]">
+        <div className="max-w-[1296px] mx-auto px-4 md:px-10 lg:px-[60px]">
           <div className="w-full h-[400px] rounded-md overflow-hidden">
             <iframe
               ref={mapRef}
@@ -41,16 +41,18 @@ export default function Footer() {
       </div>
 
       {/* Informações e redes sociais */}
-      <div className="max-w-[1124px] mx-auto px-4 md:px-10 lg:px-[60px] pt-[28px] pb-8 md:py-8">
+      <div className="max-w-[1296px] mx-auto px-4 md:px-10 lg:px-[60px] pt-[28px] pb-8 md:py-8">
         <div className="flex flex-col md:flex-row md:justify-between">
           {/* Coluna da esquerda - Informações */}
           <div className="md:flex-1">
-            <h3 className="text-[#FF8904] text-[22px] md:text-[32px] font-bold mb-[24px] md:mb-6">Frésco</h3>
+            <h3 className="text-[#ff8904] text-[22px] md:text-[32px] mb-[24px] md:mb-6 font-decorativa">
+              Frésco
+            </h3>
 
             {/* Box com informações de contato */}
             <div className="space-y-[20px] md:space-y-6 mb-[24px] md:mb-6">
               <div className="flex items-start space-x-3">
-                <MapPin className="text-[#FF8904] mt-1 flex-shrink-0 h-5 w-5" />
+                <MapPin className="text-[#ff8904] mt-1 flex-shrink-0 h-5 w-5" />
                 <div>
                   <p className="text-white text-base">R. Benedito Mateus, 399</p>
                   <p className="text-gray-400 text-sm">Jardim Santa Terezinha (Nova Veneza),</p>
@@ -59,12 +61,12 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center space-x-3">
-                <Phone className="text-[#FF8904] flex-shrink-0 h-5 w-5" />
+                <Phone className="text-[#ff8904] flex-shrink-0 h-5 w-5" />
                 <p className="text-white text-base">(19) 99000-2216</p>
               </div>
 
               <div className="flex items-start space-x-3">
-                <Clock className="text-[#FF8904] mt-1 flex-shrink-0 h-5 w-5" />
+                <Clock className="text-[#ff8904] mt-1 flex-shrink-0 h-5 w-5" />
                 <div>
                   <p className="text-white text-base">Horário de Funcionamento:</p>
                   <p className="text-gray-400 text-sm">Qua-Dom: 18h às 02h</p>
@@ -75,16 +77,16 @@ export default function Footer() {
 
             {/* Box com redes sociais */}
             <div className="space-y-3">
-              <h3 className="text-[#FF8904] text-lg font-bold">Siga-nos</h3>
+              <h3 className="text-[#ff8904] text-lg font-bold">Siga-nos</h3>
               <div className="flex space-x-3">
                 <span
-                  className="bg-[#FF8904] rounded-full p-3 hover:bg-[#E17100] transition-colors cursor-default"
+                  className="bg-[#ff8904] rounded-full p-3 hover:bg-[#e17100] transition-colors cursor-default"
                   aria-label="Instagram"
                 >
                   <Instagram className="h-5 w-5 text-white" />
                 </span>
                 <span
-                  className="bg-[#FF8904] rounded-full p-3 hover:bg-[#E17100] transition-colors cursor-default"
+                  className="bg-[#ff8904] rounded-full p-3 hover:bg-[#e17100] transition-colors cursor-default"
                   aria-label="Facebook"
                 >
                   <Facebook className="h-5 w-5 text-white" />
@@ -114,16 +116,16 @@ export default function Footer() {
 
       {/* Copyright e links */}
       <div className="border-t border-gray-800 py-6">
-        <div className="max-w-[1124px] mx-auto px-4 md:px-10 lg:px-[60px]">
+        <div className="max-w-[1296px] mx-auto px-4 md:px-10 lg:px-[60px]">
           <div className="flex flex-col md:flex-row justify-between">
             <p className="text-gray-400 text-sm mb-4 md:mb-0 text-left max-w-[200px] md:max-w-none">
               © 2025 Frésco. Todos os direitos reservados.
             </p>
             <div className="flex w-full md:w-auto justify-between md:justify-end md:space-x-6">
-              <Link href="/terms" className="text-gray-400 text-sm hover:text-[#FF8904] transition-colors">
+              <Link href="/terms" className="text-gray-400 text-sm hover:text-[#ff8904] transition-colors">
                 Termos de Uso
               </Link>
-              <Link href="/privacy" className="text-gray-400 text-sm hover:text-[#FF8904] transition-colors">
+              <Link href="/privacy" className="text-gray-400 text-sm hover:text-[#ff8904] transition-colors">
                 Política de Privacidade
               </Link>
             </div>
